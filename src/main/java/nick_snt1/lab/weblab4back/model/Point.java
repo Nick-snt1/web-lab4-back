@@ -9,11 +9,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-import lombok.Getter;
+import lombok.Data;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
 
-@Getter @Setter @NoArgsConstructor
+
+@Data @Builder @AllArgsConstructor @NoArgsConstructor
 @Entity @Table(name="web_lab4_points")
 public class Point {
 
@@ -21,13 +23,7 @@ public class Point {
     @SequenceGenerator(name = "points_seq", sequenceName = "points_seq", allocationSize = 1)
     @GeneratedValue   (strategy = GenerationType.SEQUENCE, generator = "points_seq")
     @JsonIgnore private Long   id;
-    private Double x;
-    private Double y;
-    private Double r;
+    private Double x, y, r;
     private String hit;
     @JsonIgnore private String owner;
-    
-    public Point(Double x, Double y, Double r, String hit, String owner) {
-        this.x = x; this.y = y; this.r = r; this.hit = hit; this.owner = owner;
-    }
 }
