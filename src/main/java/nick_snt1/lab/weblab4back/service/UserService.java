@@ -21,7 +21,7 @@ public class UserService {
     @Autowired private AuthenticationManager authManager;
  
     public AuthResponse register(UserDTO req) throws Exception {
-        if (repo.findByName(req.getName()) != null) throw new Exception();
+        if (repo.findByName(req.getName()).isPresent()) throw new Exception();
         User user = User.builder().name(req.getName()).password(passwordEncoder.encode(req.getPassword())).role(Role.USER).build();
         repo.save(user);
         return AuthResponse.builder().token(jwtService.generateToken(user)).build();
