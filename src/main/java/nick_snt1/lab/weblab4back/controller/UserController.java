@@ -24,7 +24,7 @@ public class UserController {
         try {
             return ResponseEntity.ok(service.register(userDTO));
         } catch (Exception e) { 
-            return ResponseEntity.badRequest().body("Name " + userDTO.getName() + " has already taken." + e.getMessage() +" "+ e.getCause());
+            return ResponseEntity.badRequest().body("Name " + userDTO.getName() + " has already taken.");
         }
         
     }
