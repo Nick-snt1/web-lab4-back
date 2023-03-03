@@ -22,7 +22,7 @@ public class Point {
     @Id
     @SequenceGenerator(name = "points_seq", sequenceName = "points_seq", allocationSize = 1)
     @GeneratedValue   (strategy = GenerationType.SEQUENCE, generator = "points_seq")
-    @JsonIgnore private Long   id;
+    private Long   id;
     private Double x, y, r;
     private String hit;
     @JsonIgnore private String owner;
